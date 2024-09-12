@@ -1,0 +1,90 @@
+Użycie:
+  org.inkscape.Inkscape [OPCJA…] plik1 [plik2 [plikN]]
+
+Przetwarzaj (lub otwieraj) jeden lub więcej plików.
+
+Opcje pomocy:
+  -?, --help                                                            Wyświetla opcje pomocy
+  --help-all                                                            Wyświetla wszystkie opcje pomocy
+  --help-gapplication                                                   Wyświetla opcje GApplication
+  --help-gtk                                                            Wyświetla opcje biblioteki GTK
+
+Opcje programu:
+  -V, --version                                                         Wyświetl wersję Inkscape
+  --debug-info                                                          Drukowanie informacji o debugowaniu
+  --system-data-directory                                               Wskaż systemowy katalog z danymi
+  --user-data-directory                                                 Wskaż katalog z danymi użytkownika
+  --app-id-tag                                                          Uruchom unikalną kopię programu Inkscape z identyfikatorem “org.inkscape.Inkscape.TAG”
+    
+Importowanie plików:                                           
+  -p, --pipe                                                            Odczyt pliku wejściowego ze standardowego wejścia (stdin)
+  -n, --pages=PAGE[,PAGE]                                               Numery stron do zaimportowania z dokumentu wielostronicowego, np. PDF
+  --pdf-poppler                                                         Użyj Poppler podczas importowania za pomocą wiersza polecenia
+  --pdf-font-strategy=STRATEGIA                                         Sposób analizowania czcionek we wbudowanym importerze PDF [draw-missing|draw-all|delete-missing|delete-all|substitute|keep]
+  --convert-dpi-method=METODA                                           Metoda używana do konwertowania DPI dokumentu w wersji przed 0.92, w razie potrzeby: [none|scale-viewbox|scale-document]
+  --no-convert-text-baseline-spacing                                    Nie naprawiaj odstępów linii bazowej tekstu przy otwieraniu dokumentów w wersji sprzed 0.92
+    
+Eksport plików:                                                
+  -o, --export-filename=Nazwa pliku                                     Nazwa pliku docelowego (domyślnie taka jak wejściowa; typ pliku na podstawie rozszerzenia jeśli jest dostępne; użyj '-' do zapisu na konsolę)
+  --export-overwrite                                                    Zastąp plik wejściowy (w przeciwnym razie dodaj sufiks "_out", jeśli typ nie ulegnie zmianie)
+  --export-type=TYPE[,TYPE]*                                            Typ plików przy eksportowaniu: [svg, png, ps, eps, pdf, emf, wmf, xaml]
+  --export-extension=EXTENSION-ID                                       Identyfikator rozszerzenia używany do eksportowania
+    
+Eksportowany obszar:                                           
+  -C, --export-area-page                                                Obszar do wyeksportowania to strona
+  -D, --export-area-drawing                                             Obszar do wyeksportowania to cały rysunek (bez względu na rozmiaru strony)
+  -a, --export-area=x0:y0:x1:y1                                         Obszar do eksportu w jednostkach użytkownika SVG
+  --export-area-snap                                                    Przyciągnij obszar eksportu bitmapy na zewnątrz do najbliższej wartości całkowitej
+  -d, --export-dpi=DPI                                                  Rozdzielczość dla bitmap i filtrów zrasteryzowanych; wartość domyślna to 96
+  -w, --export-width=SZEROKOŚĆ                                          Szerokość bitmapy w pikselach (zastępuje --export-dpi)
+  -h, --export-height=WYSOKOŚĆ                                          Wysokość bitmapy w pikselach (zastępuje --export-dpi)
+  --export-margin=MARGINES                                              Margines wokół obszaru eksportu: jednostki rozmiaru strony dla formatu SVG, mm dla PS/EPS/PDF
+    
+Eksportuj opcje:                                               
+  --export-page=all|n[,a-b]                                             Numer strony do exportu
+  -i, --export-id=IDENTYFIKATOR OBIEKTU [; IDENTYFIKATOR OBIEKTU] *     Identyfikator (-y) obiektów do wyeksportowania
+  -j, --export-id-only                                                  Ukryj wszystkie obiekty z wyjątkiem obiektu o identyfikatorze wybranym przez identyfikator eksportu
+  -l, --export-plain-svg                                                Usuń atrybuty/właściwości SVG specyficzne dla Inkscape
+  --export-ps-level=POZIOM                                              Poziom PostScript (2 lub 3); wartość domyślna to 3
+  --export-pdf-version=Wersja                                           Wersja PDF (1.4 lub 1.5); domyślnie wynosi 1,5
+  -T, --export-text-to-path                                             Konwertowanie tekstu na ścieżki (PS/EPS/PDF/SVG)
+  --export-latex                                                        Eksportuj tekst oddzielnie do pliku LaTeX (PS/EPS/PDF)
+  --export-ignore-filters                                               Renderowanie obiektów bez filtrów zamiast rasteryzacji (PS/EPS/PDF)
+  -t, --export-use-hints                                                Użyj przechowywanej nazwy pliku i wskazówek DPI podczas eksportowania obiektu wybranego przez--Export-ID
+  -b, --export-background=KOLOR                                         Kolor tła dla wyeksportowanych Bitmap (dowolny ciąg koloru SVG)
+  -y, --export-background-opacity=WARTOŚĆ                               Przezroczystość tła dla wyeksportowanych Bitmap (0,0 do 1,0 lub od 1 do 255)
+  --export-png-color-mode=TRYB KOLORÓW                                  Tryb kolorów (głębia bitowa i typ koloru) dla eksportowanych map bitowych (Gray_1/Gray_2/Gray_4/Gray_8/Gray_16/RGB_8/RGB_16/GrayAlpha_8/GrayAlpha_16/RGBA_8/RGBA_16)
+  --export-png-use-dithering=false|true                                 Wymusza szum (dithering) lub go wyłącza
+    
+Kwerenda obiektów/obszaru dokumentu:                           
+  -I, --query-id=IDENTYFIKATOR OBIEKTU [, IDENTYFIKATOR OBIEKTU] *      IDENTYFIKATORY obiektów, które mają być wybrane
+  -S, --query-all                                                       Drukuj obwiednie wszystkich obiektów
+  -X, --query-x                                                         Współrzędna X rysunku lub obiektu (Jeśli określona przez --query-id)
+  -Y, --query-y                                                         Współrzędna Y rysunku lub obiektu (Jeśli określona przez --query-id)
+  -W, --query-width                                                     Szerokość rysunku lub obiektu (Jeśli określona przez --query-id)
+  -H, --query-height                                                    Wysokość rysunku lub obiektu (Jeśli określona przez --query-id)
+    
+Zaawansowane przetwarzanie plików:                             
+  --vacuum-defs                                                         Usuń nieużywane definicje ze wszystkich sekcji <defs> dokumentu
+  --select=IDENTYFIKATOR OBIEKTU [, IDENTYFIKATOR OBIEKTU] *            Zaznaczanie obiektów: rozdzielana przecinkami lista identyfikatorów
+                                                                    
+  --actions=OPERACJA(:ARG)[; OPERACJA(:ARG)]*                           Lista operacji (z opcjonalnymi argumentami) do wykonania
+  --action-list                                                         Lista wszystkich dostępnych operacji
+  --actions-file=Nazwa pliku                                            Użyj pliku z listą operacji
+    
+Interfejs:                                                     
+  -g, --with-gui                                                        Z graficznym interfejsem użytkownika (wymaganym przez niektóre operacje/polecenia)
+  --batch-process                                                       Zamknij GUI po wykonaniu wszystkich operacji/poleceń
+                                                                    
+  --shell                                                               Uruchom Inkscape w trybie powłoki interaktywnej
+  -q, --active-window                                                   Użyj aktywnego okna z linii poleceń
+  --display=EKRAN                                                       Używany ekran X
+
+
+Przykłady:
+  Eksportuj wejściowy format SVG (in.svg) do PDF (out.pdf):
+	inkscape --export-filename=out.pdf in.svg
+  Eksportuj pliki wejściowe (in1.svg, in2.svg) do formatu PNG zachowując oryginalną nazwę (in1.png, in2.png):
+	inkscape --export-type=png in1.svg in2.svg
+  Zobacz 'man inkscape' i http://wiki.inkscape.org/wiki/index.php/Using_the_Command_Line, aby uzyskać więcej informacji.
+

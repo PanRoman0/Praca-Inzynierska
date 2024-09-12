@@ -1,0 +1,27 @@
+import sys
+file_path = '/home/panroman0/Pulpit/Generator/Model_1.FCStd'
+srednica_palca = sys.argv[2]
+dlugosc_palca = sys.argv[3]
+
+doc = FreeCAD.open(file_path)
+sheet = doc.Spreadsheet
+
+sheet.set('C3', srednica_palca)
+sheet.set('C4', dlugosc_palca)
+
+doc.recompute()
+doc.save()
+
+__objs__ = []
+__objs__.append(FreeCAD.getDocument("Model_1").getObject("Sketch001"))
+__objs__.append(FreeCAD.getDocument("Model_1").getObject("Sketch"))
+import importSVG
+if hasattr(importSVG, "exportOptions"):
+    options = importSVG.exportOptions(u"/home/panroman0/Pulpit/Generator/Model_1.svg")
+    importSVG.export(__objs__, u"/home/panroman0/Pulpit/Generator/Model_1.svg", options)
+else:
+    importSVG.export(__objs__, u"/home/panroman0/Pulpit/Generator/Model_1.svg")
+
+del __objs__
+
+exit()

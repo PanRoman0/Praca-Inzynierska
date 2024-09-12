@@ -1,0 +1,126 @@
+usage: sendto_silhouette.py [-h] [--output OUTPUT] [--active-tab ACTIVE_TAB]
+                            [-d DASHES] [-a AUTOCROP] [-b BBOXONLY]
+                            [-c BLADEDIAMETER]
+                            [-C {no_mat,cameo_12x12,cameo_12x24,portrait_8x12,cameo_plus_15x15,cameo_pro_24x24}]
+                            [-D DEPTH] [--log_paths DUMP_PATHS]
+                            [--append_logs APPEND_LOGS] [--dry_run DRY_RUN]
+                            [-g {mintravel,mintravelfull,mintravelfwd,matfree,zorder}]
+                            [--orient_paths {natural,desy,ascy,desx,ascx}]
+                            [--fuse_paths FUSE_PATHS] [-l SW_CLIPPING]
+                            [-m {100,101,102,106,111,112,113,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,300}]
+                            [-o OVERCUT] [-M MULTIPASS] [-p PRESSURE]
+                            [-P SHARPENCORNERS]
+                            [--sharpencorners_start SHARPENCORNERS_START]
+                            [--sharpencorners_end SHARPENCORNERS_END]
+                            [-r REVERSETOGGLE] [-s SPEED] [-S SMOOTHNESS]
+                            [-t {autoblade,cut,pen,default}] [-T {1,2}]
+                            [--preview PREVIEW] [-V] [-w WAIT_DONE] [-x X_OFF]
+                            [-y Y_OFF] [-R REGMARK] [--regsearch REGSEARCH]
+                            [-X REGWIDTH] [-Y REGLENGTH] [--rego-x REGORIGINX]
+                            [--rego-y REGORIGINY] [-e {start,below}]
+                            [--end_offset END_OFFSET] [--logfile LOGFILE]
+                            [--cmdfile CMDFILE] [--inc_queries INC_QUERIES]
+                            [--force_hardware FORCE_HARDWARE] [--id IDS]
+                            [--selected-nodes SELECTED_NODES]
+                            [INPUT_FILE]
+
+Inkscape Extension to send to a Silhouette Cameo
+
+positional arguments:
+  INPUT_FILE            Filename of the input file (default is stdin)
+
+options:
+  -h, --help            show this help message and exit
+  --output OUTPUT       Optional output filename for saving the result
+                        (default is stdout).
+  --active-tab ACTIVE_TAB
+                        SUPPRESSHELP
+  -d DASHES, --dashes DASHES
+                        convert paths with dashed strokes to separate subpaths
+                        for perforated cuts
+  -a AUTOCROP, --autocrop AUTOCROP
+                        trim away top and left margin (before adding offsets)
+  -b BBOXONLY, --bbox BBOXONLY, --bbox-only BBOXONLY, --bbox_only BBOXONLY
+                        draft the objects bounding box instead of the objects
+  -c BLADEDIAMETER, --bladediameter BLADEDIAMETER
+                        [0..2.3] diameter of the used blade [mm], default =
+                        0.9
+  -C {no_mat,cameo_12x12,cameo_12x24,portrait_8x12,cameo_plus_15x15,cameo_pro_24x24}, --cuttingmat {no_mat,cameo_12x12,cameo_12x24,portrait_8x12,cameo_plus_15x15,cameo_pro_24x24}
+                        Use cutting mat
+  -D DEPTH, --depth DEPTH
+                        [0..10], or -1 for media default
+  --log_paths DUMP_PATHS
+                        Include final cut paths in log
+  --append_logs APPEND_LOGS
+                        Append to log and dump files rather than overwriting
+  --dry_run DRY_RUN     Do not send commands to device (queries allowed)
+  -g {mintravel,mintravelfull,mintravelfwd,matfree,zorder}, --strategy {mintravel,mintravelfull,mintravelfwd,matfree,zorder}
+                        Cutting Strategy: mintravel, mintravelfull,
+                        mintravelfwd, matfree or zorder
+  --orient_paths {natural,desy,ascy,desx,ascx}
+                        Pre-orient paths: natural (as in svg), or
+                        [des(cending)|asc(ending)][y|x]
+  --fuse_paths FUSE_PATHS
+                        Merge any path with predecessor that ends at its
+                        start.
+  -l SW_CLIPPING, --sw_clipping SW_CLIPPING
+                        Enable software clipping
+  -m {100,101,102,106,111,112,113,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,300}, --media {100,101,102,106,111,112,113,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,300}, --media-id {100,101,102,106,111,112,113,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,300}, --media_id {100,101,102,106,111,112,113,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,300}
+                        113 = pen, 132 = printer paper, 300 = custom
+  -o OVERCUT, --overcut OVERCUT
+                        overcut on circular paths. [mm]
+  -M MULTIPASS, --multipass MULTIPASS
+                        [1..8], cut/draw each path object multiple times.
+  -p PRESSURE, --pressure PRESSURE
+                        [1..18], or 0 for media default
+  -P SHARPENCORNERS, --sharpencorners SHARPENCORNERS
+                        Lift head at sharp corners
+  --sharpencorners_start SHARPENCORNERS_START
+                        Sharpen Corners - Start Ext. [mm]
+  --sharpencorners_end SHARPENCORNERS_END
+                        Sharpen Corners - End Ext. [mm]
+  -r REVERSETOGGLE, --reversetoggle REVERSETOGGLE
+                        Cut each path the other direction. Affects every
+                        second pass when multipass.
+  -s SPEED, --speed SPEED
+                        [1..10], or 0 for media default
+  -S SMOOTHNESS, --smoothness SMOOTHNESS
+                        Smoothness of curves
+  -t {autoblade,cut,pen,default}, --tool {autoblade,cut,pen,default}
+                        Optimize for pen or knive
+  -T {1,2}, --toolholder {1,2}
+                        [1..2]
+  --preview PREVIEW     show cut pattern graphically before sending
+  -V, --version         print the version number and exit
+  -w WAIT_DONE, --wait WAIT_DONE, --wait-done WAIT_DONE, --wait_done WAIT_DONE
+                        After sending wait til device reports ready
+  -x X_OFF, --x-off X_OFF, --x_off X_OFF
+                        X-Offset [mm]
+  -y Y_OFF, --y-off Y_OFF, --y_off Y_OFF
+                        Y-Offset [mm]
+  -R REGMARK, --regmark REGMARK
+                        The document has registration marks.
+  --regsearch REGSEARCH
+                        Search for the registration marks.
+  -X REGWIDTH, --reg-x REGWIDTH, --regwidth REGWIDTH
+                        X mark distance [mm]
+  -Y REGLENGTH, --reg-y REGLENGTH, --reglength REGLENGTH
+                        Y mark distance [mm]
+  --rego-x REGORIGINX, --regoriginx REGORIGINX
+                        X mark origin from left [mm]
+  --rego-y REGORIGINY, --regoriginy REGORIGINY
+                        X mark origin from top [mm]
+  -e {start,below}, --endposition {start,below}, --end-postition {start,below}, --end_position {start,below}
+                        Position of head after cutting: start or below
+  --end_offset END_OFFSET
+                        Adjustment to the position after cutting
+  --logfile LOGFILE     Name of file in which to save log messages.
+  --cmdfile CMDFILE     Name of file to save transcript of cutter commands.
+  --inc_queries INC_QUERIES
+                        Include queries in cutter command transcript
+  --force_hardware FORCE_HARDWARE
+                        Override hardware model of cutting device.
+  --id IDS              id attribute of object to manipulate
+  --selected-nodes SELECTED_NODES
+                        id:subpath:position of selected nodes, if any
+

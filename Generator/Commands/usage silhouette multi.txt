@@ -1,0 +1,26 @@
+usage: silhouette_multi.py [-h] [--output OUTPUT] [-b BLOCK_INKSCAPE]
+                           [-d DRY_RUN] [-g GUI] [-p PICKLE_PATH] [-v VERBOSE]
+                           [--id IDS] [--selected-nodes SELECTED_NODES]
+                           [INPUT_FILE]
+
+positional arguments:
+  INPUT_FILE            Filename of the input file (default is stdin)
+
+options:
+  -h, --help            show this help message and exit
+  --output OUTPUT       Optional output filename for saving the result
+                        (default is stdout).
+  -b BLOCK_INKSCAPE, --block BLOCK_INKSCAPE
+                        Make inkscape wait until silhouette_multi is done
+  -d DRY_RUN, --dry_run DRY_RUN
+                        Display generated commands but do not run them
+  -g GUI, --gui GUI     Should silhouette_multi use a gui to select its
+                        actions?
+  -p PICKLE_PATH, --pickle PICKLE_PATH
+                        Path of the pickle file with initial option settings
+  -v VERBOSE, --verbose VERBOSE
+                        Enable verbose logging
+  --id IDS              id attribute of object to manipulate
+  --selected-nodes SELECTED_NODES
+                        id:subpath:position of selected nodes, if any
+
